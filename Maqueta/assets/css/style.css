@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rock+Salt&display=swap');
+
+
+body {
+	background-color: lightgrey;
+	background-image: url(../images/fondo.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+
+.foto-perfil {
+	margin-left: 50px;
+	margin-top: -20px;
+}
+
+.perfil {
+	position: relative;
+	margin-left: 220px;
+	
+}
+
+.perfil h1{
+	font-family: 'Rock Salt', cursive;
+	font-size: 50px;
+	color: #ffffff;
+}
+
+.perfil h3{
+	font-family: 'Press Start 2P', cursive;
+	font-size: 25px;
+	color: #ffffff;
+	
+}
+.tarjetas {
+	max-width: 1800px;
+	align-self: auto;
+	margin: 0px 50px;
+	background-color: white transparent;
+}
+
+.servicios {
+	align-self: auto;
+
+
+}
+
+.services {
+	width: 50px;
+	align-self: auto;
+
+}
+
+.cabeceras {
+	background-color: #8e532f;
+	border: 1px solid;
+	border-radius: 3px;
+	padding: 3px;
+	color: white;
+}
+
+.cajas {
+	max-width: 600px;
+	align-items: flex-end;
+	align-self: auto;
+	align-content: center;
+	margin: auto;
+}
+
+section div.cajas img {
+	width: 100px;
+	height: 100px;
+	align-self: center;
+}
+
+section div.cajas.mod {
+	border: 1px solid #8e532f;
+	border-radius: 50px;
+	padding: 10px;
+}
+
+section div.cajas.mod h5 {
+	background-color: #8e532f;
+	color: white;
+	border-radius: 15px;
+	text-align: center;
+}
+
+section div.cajas.mod p {
+	text-align: justify;
+}
+
+.boton {
+	text-decoration: none;
+	align-content: center;
+
+}
