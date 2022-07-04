@@ -1,0 +1,50 @@
+{
+    "aboutme": {
+            "name": "Mauro Andres Vicens",
+            "title": "Desarrollador Full Stack",
+            "quiensoy": "Buena presencia. Joven, dinámico, con ganas de labrarme un futuro. Facilidad de trato con Clientes. Gran capacidad de trabajo, entusiasmo y energía. Amplios conocimientos de las nuevas tecnologías y sus aplicaciones prácticas. Facilidad de aprendizaje."
+        },
+    
+    "experience": [
+        {
+            "posicion": "Técnico de Mantenimiento de Red",
+            "empresa": "Iplan Networks",
+            "descripcion": "Start up de clientes y equipamiento de nodo. Resolución de reclamos (clientes y red). Supervisión de contratistas in situ. Relevamiento de red. Certificaciones de Órdenes de Trabajo (cableados internos y externos).             Pruebas de Autonomía de UPS.",
+            "inicio": "02-2005",
+            "fin": "08-2005"
+        },
+        {
+            "posicion": "Técnico de Mantenimiento de Red",
+            "empresa": "Iplan Networks",
+            "descripcion": "Start up de clientes y equipamiento de nodo. Resolución de reclamos (clientes y red). Supervisión de contratistas in situ. Relevamiento de red. Certificaciones de Órdenes de Trabajo (cableados internos y externos).             Pruebas de Autonomía de UPS.",
+            "inicio": "02-2005",
+            "fin": "08-2005"
+        },
+        {
+            "posicion": "Atención al Cliente y Reparador de PC",
+            "empresa": "Cybercab",
+            "descripcion": "Atención al Cliente, Sistema de cobro Pago Fácil, y reparador de PC.",
+            "inicio": "02-2005",
+            "fin": "08-2005"
+        }
+    ],
+
+    "studies": [
+        {
+            "titulo": "",
+            "institucion": "",
+            "anio": ""
+        }
+    ],
+
+    "skills": [
+
+    ],
+
+    "projects": [
+        
+    ],
+    "contact": {
+        
+    }
+}
