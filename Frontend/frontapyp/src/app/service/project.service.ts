@@ -11,10 +11,10 @@ export class ProjectService {
 
   private apiServerUrl=environment.urlBase;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
 
     public getProject():Observable<Project[]> {
-      return this.http.get<Project[]>('${this.apiServerUrl}/project/all');
+      return this.http.get<Project[]>(`${this.apiServerUrl}/project/all`);
     }
   
     public getProjectById(idProject: number):Observable<Project> {
@@ -22,17 +22,17 @@ export class ProjectService {
     }
 
     public addProject(project: Project):Observable<any>{
-      return this.http.post<any>('${this.apiServerUrl}/project/add', project);
+      return this.http.post<any>(`${this.apiServerUrl}/project/add`, project);
     }
   
     public editProject(project: Project):Observable<Project>{
       let idProject = project.idproject;
-      return this.http.put<Project>('${this.apiServerUrl}/project/edit', project);
+      return this.http.put<Project>(`${this.apiServerUrl}/project/edit`, project);
     }
   
     public deleteProject(idProject: number):Observable<void>{
       let id = idProject;
-      return this.http.delete<void>('${this.apiServerUrl}/project/delete/${idContact}');
+      return this.http.delete<void>(`${this.apiServerUrl}/project/delete/${idProject}`);
     }
    }
-}
+

@@ -11,10 +11,10 @@ export class ContactService {
 
   private apiServerUrl=environment.urlBase;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
     public getContact():Observable<Contact[]> {
-      return this.http.get<Contact[]>('${this.apiServerUrl}/contact/all');
+      return this.http.get<Contact[]>(`${this.apiServerUrl}/contact/all`);
     }
 
     public getContactById(idContact: number):Observable<Contact> {
@@ -22,17 +22,17 @@ export class ContactService {
     }
   
     public addContact(contact: Contact):Observable<any>{
-      return this.http.post<any>('${this.apiServerUrl}/contact/add', contact);
+      return this.http.post<any>(`${this.apiServerUrl}/contact/add`, contact);
     }
   
     public editContact(contact: Contact):Observable<Contact>{
       let idContact = contact.idcontact;
-      return this.http.put<Contact>('${this.apiServerUrl}/contact/edit', contact);
+      return this.http.put<Contact>(`${this.apiServerUrl}/contact/edit`, contact);
     }
   
     public deleteContact(idContact: number):Observable<void>{
       let id = idContact;
-      return this.http.delete<void>('${this.apiServerUrl}/contact/delete/${idContact}');
+      return this.http.delete<void>(`${this.apiServerUrl}/contact/delete/${idContact}`);
     }
   }
-}
+
