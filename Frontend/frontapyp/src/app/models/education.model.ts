@@ -4,8 +4,8 @@ export class Education {
     certificate: string;
     year: string;
 
-    constructor(ideducation: number,institute:string,certificate: string,year: string) {
-        this.ideducation = ideducation;
+    constructor(idEducation: number,institute:string,certificate: string,year: string) {        
+        this.ideducation = idEducation;
         this.institute = institute;
         this.certificate = certificate;
         this.year = year;

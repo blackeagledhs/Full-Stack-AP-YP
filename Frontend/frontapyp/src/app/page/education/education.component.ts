@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EducationComponent implements OnInit {
 
-  public education: Education[]=[];
+  public education: Education[] = [];
   public editEducation: Education | undefined;
   public deleteEducation: Education | undefined;
   
@@ -24,93 +24,76 @@ export class EducationComponent implements OnInit {
   }
 
   public getEducation():void {
-    this.educationService.getEducation().subscribe({
-      next:(response: Education[]) => {
-        this.education = response;
+    this.educationService.getEducation().subscribe(
+      data => {
+        this.education = data;
       },
-      error:(error: HttpErrorResponse) => {
-        alert(error.message);
+      error => {
+        console.log(error);
       }
-
-      })
-    }
-
-    public onAddEducation(addForm: NgForm):void {
-      document.getElementById('add-estudios-modal')?.click();
-      this.educationService.addEducation(addForm.value).subscribe({
-        next:(response: Education) => {
-          console.log(response);
-          this.getEducation();
-          addForm.reset();
-        },
-        error:(error: HttpErrorResponse) => {
-          alert(error.message);
-          addForm.reset();
-        }
-
-      })
-    }
-
-    public onEditEducation(education: Education):void {
-		  this.educationService.editEducation(education).subscribe({
-			next:(response: Education) => {
-			console.log(response);
-			this.getEducation();
-			
-		  },
-		  error:(error: HttpErrorResponse) => {
-			alert(error.message);
-		  }
-		  
-		})
-    }
-
-    public onDeleteEducation(idEducation: number):void {
-      this.educationService.deleteEducation(idEducation).subscribe({
-        next:(response: void) => {
-        console.log(response);
-        this.getEducation();
-        
-      },
-      error:(error: HttpErrorResponse) => {
-        console.log(error.message);
-      }
-    })
-    
+    )
   }
-  /**Modal */
-  public onOpenModal(mode: string, education?: Education): void{
-    const container = document.getElementById('cero');
-    const button = document.createElement('button');
-    button.type = 'button';
+
+  public onOpenModal(mode: String, education?: Education): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('buttoon');
+    //button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'add') {
       button.setAttribute('data-target', '#addEducationModal');
-    }
-
-    if (mode === 'edit') {
-      this.editEducation = education;
-      button.setAttribute('data-target', '#updateEducationModal');
-    }
-  
-  
-    if (mode === 'delete') {
+    } else if (mode === 'delete') {
+      button.setAttribute('data-target', '#deleteEducationModal');
       this.deleteEducation = education;
-      button.setAttribute('data-target', '#deleteEducacionModal');
+    } else if (mode === 'edit') {
+      button.setAttribute('data-target', '#editEducationModal');
+      this.editEducation = education;
     }
-  /*
-  
-    */
     container?.appendChild(button);
     button.click();
   }
 
-
-
-
+  public onAddEducation(addForm: NgForm): void {
+    document.getElementById('addEducationModal')?.click();
+    this.educationService.addEducation(addForm.value).subscribe({
+      next: (_response: Education) => {
+        this.getEducation();
+        addForm.reset();
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message);
+        addForm.reset();
+      }
+    })
   }
 
+  public onEditEducation(education: Education): void {
+    this.educationService.editEducation(education).subscribe(
+      (response: Education) => {
+        console.log(response);
+        this.getEducation();
+      },
+      (error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    )
+  }
+
+  
+  public onDeleteEducation(idEducation: number): void {
+    this.educationService.deleteEducation(idEducation).subscribe({
+			next:(response: void) => {
+      console.log(response);
+      this.getEducation();
+      
+    },
+    error: (error: HttpErrorResponse) => {
+      alert(error.message);
+      
+    }
+  })
+  
+}
 
 
-
+}

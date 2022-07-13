@@ -25,14 +25,12 @@ export class ExperienceService {
       return this.http.post<any>(`${this.apiServerUrl}/experience/add`, experience);
     }
   
-    public editExperience(experience: Experience):Observable<Experience>{
-      let idExperience = experience.idexperience;
-      return this.http.put<Experience>(`${this.apiServerUrl}/experience/edit`, experience);
+    public editExperience(experience: Experience):Observable<Experience>{      
+      return this.http.put<Experience>(`${this.apiServerUrl}/experience/edit/`, experience);
     }
   
-    public deleteExperience(idExperience: number):Observable<void>{
-      let id = idExperience;
-      return this.http.delete<void>(`${this.apiServerUrl}/experience/delete/${idExperience}`);
+    public deleteExperience(idExperience: number):Observable<any>{      
+      return this.http.delete<any>(`${this.apiServerUrl}/experience/delete/${idExperience}`);
     } 
   }
 
