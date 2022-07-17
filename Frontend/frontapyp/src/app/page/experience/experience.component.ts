@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { Experience } from 'src/app/models/experience.model';
 import { ExperienceService } from 'src/app/service/experience.service';
@@ -11,39 +12,89 @@ import { ExperienceService } from 'src/app/service/experience.service';
 })
 export class ExperienceComponent implements OnInit {
 
-  experiences: Experience[] = [];
+  public experience: Experience[] = [];
+  public editExperience: Experience | undefined;
+  public deleteExperience: Experience | undefined;
   
 
-  constructor(
-    private experienceService: ExperienceService) { }
+
+  constructor(private experienceService: ExperienceService) { }
 
   ngOnInit(): void {
     this.getExperience();
   }
 
-  getExperience(): void {
-    this.experienceService.getExperiences().subscribe(
+  public getExperience():void {
+    this.experienceService.getExperience().subscribe(
       data => {
-        this.experiences = data;
+        this.experience = data;
       },
-      err => {
-        console.log(err);
+      error => {
+        console.log(error);
       }
     )
   }
 
-  onDeleteExperience(idExperience: number):any {
+  public onOpenModal(mode: String, experience?: Experience): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    //button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-target', '#addExperienceModal');
+    } else if (mode === 'delete') {
+      button.setAttribute('data-target', '#deleteEducationModal');
+      this.deleteExperience = experience;
+    } else if (mode === 'edit') {
+      button.setAttribute('data-target', '#editExperienceModal');
+      this.editExperience = experience;
+    }
+    container?.appendChild(button);
+    button.click();
+  }
+
+  public onAddExperience(addForm: NgForm): void {
+    document.getElementById('addExperienceModal')?.click();
+    this.experienceService.addExperience(addForm.value).subscribe({
+      next: (_response: Experience) => {
+        this.getExperience();
+        addForm.reset();
+      },
+      error:(error:HttpErrorResponse)=>{
+        alert(error.message);
+        addForm.reset();
+      }
+    })
+  }
+
+  public onEditExperience(experience: Experience): void {
+    this.experienceService.editExperience(experience).subscribe(
+      (response: Experience) => {
+        console.log(response);
+        this.getExperience();
+      },
+      (error:HttpErrorResponse)=>{
+        alert(error.message);
+      }
+    )
+  }
+
+  
+  public onDeleteExperience(idExperience: number): void {
     this.experienceService.deleteExperience(idExperience).subscribe({
-			next:(response: any) => {
+			next:(response: void) => {
       console.log(response);
       this.getExperience();
       
     },
-    error:(error: HttpErrorResponse) => {
+    error: (error: HttpErrorResponse) => {
       alert(error.message);
       
     }
   })
   
 }
+
+
 }

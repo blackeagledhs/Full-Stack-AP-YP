@@ -13,8 +13,8 @@ export class ExperienceService {
 
   constructor(private http: HttpClient) { }
 
-    public getExperiences(): Observable<Experience[]> {
-      return this.http.get<Experience[]>(`${this.apiServerUrl}/experiences/all`);
+    public getExperience(): Observable<Experience[]> {
+      return this.http.get<Experience[]>(`${this.apiServerUrl}/experience/all`);
     }
 
     public getExperienceById(idExperience: number):Observable<Experience> {
@@ -26,11 +26,11 @@ export class ExperienceService {
     }
   
     public editExperience(experience: Experience):Observable<Experience>{      
-      return this.http.put<Experience>(`${this.apiServerUrl}/experience/edit/`, experience);
+      return this.http.put<Experience>(`${this.apiServerUrl}/experience/edit`, experience);
     }
   
-    public deleteExperience(idExperience: number):Observable<any>{      
-      return this.http.delete<any>(`${this.apiServerUrl}/experience/delete/${idExperience}`);
+    public deleteExperience(idExperience: number):Observable<void>{      
+      return this.http.delete<void>(`${this.apiServerUrl}/experience/delete/${idExperience}`);
     } 
   }
 

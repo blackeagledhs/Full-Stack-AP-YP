@@ -1,12 +1,12 @@
 export class Experience {
-    idexperience?: number;
+    idexperience: number;
     company: string;
     description: string;
     admission: string;
     egress: string;
 
-    constructor(company: string, description: string,admission: string, egress: string){
-        
+    constructor(idExperience: number, company: string, description: string,admission: string, egress: string){
+        this.idexperience = idExperience;
         this.company = company;
         this.description = description;
         this.admission = admission;

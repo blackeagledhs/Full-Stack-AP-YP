@@ -6,8 +6,8 @@ export class Project {
     urlproject: string;
     urlimgproject: string;
 
-    constructor(idproject: number,projectname: string,projectdescription: string,urlproject: string,urlimgproject: string) {
-        this.idproject = idproject;
+    constructor(idProject: number,projectname: string,projectdescription: string,urlproject: string,urlimgproject: string) {
+        this.idproject = idProject;
         this.projectname = projectname;
         this.projectdescription = projectdescription;
         this.urlproject = urlproject;

@@ -26,12 +26,10 @@ export class ProjectService {
     }
   
     public editProject(project: Project):Observable<Project>{
-      let idProject = project.idproject;
       return this.http.put<Project>(`${this.apiServerUrl}/project/edit`, project);
     }
   
     public deleteProject(idProject: number):Observable<void>{
-      let id = idProject;
       return this.http.delete<void>(`${this.apiServerUrl}/project/delete/${idProject}`);
     }
    }

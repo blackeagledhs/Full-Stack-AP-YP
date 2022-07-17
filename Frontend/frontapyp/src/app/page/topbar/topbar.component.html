@@ -1,20 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/"><img src="../../../assets/img/logo ap.png" alt="Inicio" width="100px"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav me-auto mb-6 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="home"><i class="bi bi-house-fill"></i></a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/" ariaCurrentWhenActive="page">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="education"><i class="bi bi-book"></i></a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/education" ariaCurrentWhenActive="page">Studies</a>
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerlink="/experience" ariaCurrentWhenActive="page">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerlink="/skill" ariaCurrentWhenActive="page">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerlink="/project" ariaCurrentWhenActive="page">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerlink="/Contact" ariaCurrentWhenActive="page">Contact</a>
+          </li>
         </ul>
         
+      </div>
+    </div>
+  </nav>-->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="../../../assets/img/logo ap.png" alt="Inicio" width="100px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">          
+          <a class="nav-link" routerLinkActive="active" routerLink="/education">Education</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/experience">Experience</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/skill">H&S Skills</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/project">Projects</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/contact">Contact</a>
+        </div>
       </div>
     </div>
   </nav>
