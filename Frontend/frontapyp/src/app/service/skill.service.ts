@@ -26,12 +26,10 @@ export class SkillService {
     }
   
     public editSkill(skill: Skill):Observable<Skill>{
-      let idSkill = skill.idskill;
       return this.http.put<Skill>(`${this.apiServerUrl}/skill/edit`, skill);
     }
   
     public deleteSkill(idSkill: number):Observable<void>{
-      let id = idSkill;
       return this.http.delete<void>(`${this.apiServerUrl}/skill/delete/${idSkill}`);
     }
    }

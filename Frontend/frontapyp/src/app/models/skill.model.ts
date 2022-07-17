@@ -4,8 +4,8 @@ export class Skill {
     skill: string;
     percentage: string;
 
-    constructor(idskill: number, skill: string, percentage: string){
-        this.idskill = idskill;
+    constructor(idSkill: number, skill: string, percentage: string){
+        this.idskill = idSkill;
         this.skill = skill;
         this.percentage = percentage;
     }

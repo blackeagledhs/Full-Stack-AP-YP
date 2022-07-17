@@ -1,1 +1,117 @@
-<p>skill works!</p>
+<h3>
+	Skill's
+	<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addSkillModal"><i class="bi bi-plus-circle"></i></button>
+</h3>
+
+<div class="row" id="cero">
+
+
+
+
+    <div class="col-lg-1"></div>
+    <div class="col-lg-11">
+        <ul *ngFor="let skill of skill">
+            <li><h3> {{skill.skill}}  </h3> - <h3> {{skill.percentage}} </h3> 
+                
+				
+				                       
+                            
+
+							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editSkillModal" (click)="onOpenModal('edit', skill)">
+								<i class="bi bi-pencil"></i>
+							  
+							</button >
+							<button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteSkillModal" (click)="onOpenModal('delete', skill)" > 
+							  <i class="bi bi-trash"></i>
+							
+							</button>
+               
+				
+            </li>
+
+        </ul>
+    </div>
+
+
+</div>
+
+<!-- Modal for Add Skill -->
+<div class="modal fade" id="addSkillModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addSkillModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addSkillModal">Add Skill</h5>
+                <button type="button" class="btn-close warning" data-bs-dismiss="modal" aria-label="Close">
+                
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #addForm="ngForm" (ngSubmit)="onAddSkill(addForm)">
+
+                    <label for="skill">Skill </label><br>
+                    <input ngModel type="text" name="skill"  class="form-control">
+                    <label for="percentage">Percentage</label><br>
+                    <input ngModel type="number" name="percentage"  class="form-control">                                      
+                    <div class="modal-footer">
+                        <button  type="button" id="add-skill-modal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div> 
+
+<!--Edit Modal -->
+<div class="modal fade" id="editSkillModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-labelledby="editSkillModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="editSkillModalLabel">Edit Skill {{editSkill?.skill}}</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+             
+             </button>
+          </div>
+          <div class="modal-body">
+             <form #editForm="ngForm">
+                <div class="form-group">
+                   <label for="skill">Skill</label>
+                   <input type="text" ngModel="{{editSkill?.skill}}" name="skill" class="form-control" id="skill"  placeholder="Skill" Required />
+                </div>
+                <input type="hidden" ngModel="{{editSkill?.idskill}}" name="idskill" class="form-control" id="idskill" placeholder="">                
+                <div class="form-group">
+                   <label for="percentage">Percentage of Knowledge</label>
+                   <input type="number" ngModel="{{editSkill?.percentage}}" name="percentage" class="form-control" id="percentage" placeholder="Percentage of Knowledge" Required />
+                </div>                             
+                <div class="modal-footer">
+                   <button type="button" id="edit-skill-modal" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
+                   <button (click)="onEditSkill(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Save changes</button>
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+  </div>
+  
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteSkillModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteSkillModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">
+          <div class="modal-header">
+             <h5 class="modal-title" id="deleteSkillModelLabel">Delete Skill</h5>
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+             
+             </button>
+          </div>
+          <div class="modal-body">
+             <p>Are you sure you want to delete this skill: <strong>{{deleteSkill?.skill}}</strong> ?</p>
+             <div class="modal-footer">
+                <button type="button" id="delete-skill-modal" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button (click)="onDeleteSkill(deleteSkill!.idskill)" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
