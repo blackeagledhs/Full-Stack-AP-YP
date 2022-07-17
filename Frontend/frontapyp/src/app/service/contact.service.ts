@@ -26,12 +26,10 @@ export class ContactService {
     }
   
     public editContact(contact: Contact):Observable<Contact>{
-      let idContact = contact.idcontact;
       return this.http.put<Contact>(`${this.apiServerUrl}/contact/edit`, contact);
     }
   
     public deleteContact(idContact: number):Observable<void>{
-      let id = idContact;
       return this.http.delete<void>(`${this.apiServerUrl}/contact/delete/${idContact}`);
     }
   }

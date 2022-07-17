@@ -3,8 +3,8 @@ export class Contact {
     socialnetwork: string;
     mail: string;
 
-    constructor(idcontact: number,socialnetwork: string,mail: string) {
-        this.idcontact = idcontact;
+    constructor(idContact: number,socialnetwork: string,mail: string) {
+        this.idcontact = idContact;
         this.socialnetwork = socialnetwork;
         this.mail = mail;
     }
