@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  public oneditUser(user: User): void {
+  public onEditUser(user: User): void {
     this.userService.editUser(user).subscribe({
       next: (Response: User) => {
         console.log(Response);
@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-  public onOpenModal(user: User, mode: string): void {
+  public onOpenModal(mode: string, user?: User): void {
     const container = document.getElementById('usermodal');
     const button = document.createElement('button');
     button.type = 'button';
@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
     button.setAttribute('data-toggle', 'modal');    
     if (mode === 'edit') {
       this.editUser = user;
-      button.setAttribute('data-target', '#updateUserModal');
+      button.setAttribute('data-target', '#editUserModal');
     }    
     container?.appendChild(button);
     button.click();

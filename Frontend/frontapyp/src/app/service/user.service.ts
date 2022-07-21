@@ -13,12 +13,11 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
     
-    public getUser(): Observable<User>{
-      return this.http.get<User>(`${this.apiServerUrl}/user/getbyid/1`);
-    };
-  
-    public editUser(user: User):Observable<any>{
-      return this.http.put<any>(`${this.apiServerUrl}/user/edit/1`, user);
-    }
-  
+  public getUser(): Observable<User>{
+    return this.http.get<User>(`${this.apiServerUrl}/user/getbyid/1`);
+  };
+
+  public editUser(user: User):Observable<any>{
+    return this.http.put<any>(`${this.apiServerUrl}/user/edit/1`, user);
+  }
 }

@@ -11,8 +11,9 @@
     <div class="col-lg-1"></div>
     <div class="col-lg-11">
         <ul *ngFor="let project of project">
-            <li><h3> {{project.projectname}}  </h3> - <h3> {{project.projectdescription}} </h3> - <h3> {{project.urlproject }} </h3>
-                <img src="{{project.urlimgproject}}" alt="{{project.projectname}}"> 
+            <li><h3> {{project.projectname}}  </h3> - <h3> {{project.projectdescription}} </h3> -
+                <a [href]="project.urlproject">{{ project.urlproject}}</a>
+                <img [src]="project.urlimgproject" alt="{{project.projectname}}"> 
                 
 				
 				                       

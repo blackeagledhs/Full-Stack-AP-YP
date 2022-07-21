@@ -1,39 +1,35 @@
-<h3>
-	Experience
-	<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addExperienceModal"><i class="bi bi-plus-circle"></i></button>
-</h3>
-
-<div class="row" id="cero">
-
-
-
-
-    <div class="col-lg-1"></div>
-    <div class="col-lg-11">
-        <ul *ngFor="let experience of experience">
-            <li><h3> {{experience.company}}  </h3> - <h3> {{experience.description}} </h3> - <h3> {{experience.admission }} </h3> - <h3> {{experience.egress}} </h3>
-                
-				
-				                       
-                            
-
-							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editExperienceModal" (click)="onOpenModal('edit', experience)">
-								<i class="bi bi-pencil"></i>
-							  
-							</button >
-							<button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteExperienceModal" (click)="onOpenModal('delete', experience)" > 
-							  <i class="bi bi-trash"></i>
-							
-							</button>
-               
-				
-            </li>
-
-        </ul>
-    </div>
-
-
+<br>
+<div class="exptitle">
+<h3>Experience</h3>
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addExperienceModal"><i class="bi bi-plus-circle"></i></button>
 </div>
+<br>
+<br>
+<div class="cardexp" *ngFor="let experience of experience">
+   <div class="card">
+      <div class="card-header headertitleexp">
+        <h5>{{experience.company}}</h5>
+        <ul>
+         <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editExperienceModal" (click)="onOpenModal('edit', experience)">
+         <i class="bi bi-pencil"></i>        
+      </button ></li>
+      <li><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteExperienceModal" (click)="onOpenModal('delete', experience)" > 
+        <i class="bi bi-trash"></i>      
+      </button></li>
+      </ul>
+      </div>
+      <div class="card-body bodycard">
+        <h6>Description:</h6><br>
+        <p class="card-text">{{experience.description}}</p>
+        <div class="admegr">
+         <p><strong>Admission:</strong> {{experience.admission}} </p> &nbsp; &nbsp;  <p><strong>Egress:</strong> {{experience.egress}}</p>
+        </div>
+        
+      </div>
+    </div>
+    <br>
+   </div>
+
 
 <!-- Modal for Add Education -->
 <div class="modal fade" id="addExperienceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addExperienceModal" aria-hidden="true">
