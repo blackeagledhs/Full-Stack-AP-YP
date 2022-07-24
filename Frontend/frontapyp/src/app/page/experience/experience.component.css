@@ -41,3 +41,9 @@
   .bodycard {
     background: #81798657;
   }
+
+  .cardexp {
+    max-width: 97%;
+    align-self: auto;
+    margin: 0 50px;
+  }

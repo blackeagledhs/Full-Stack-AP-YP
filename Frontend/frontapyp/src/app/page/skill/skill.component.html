@@ -1,7 +1,77 @@
-<h3>
-	Skill's
-	<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addSkillModal"><i class="bi bi-plus-circle"></i></button>
-</h3>
+<br>
+<div class="skilltitle">
+<h3>Hard & Soft Skills</h3>
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addSkillModal"><i class="bi bi-plus-circle"></i></button>
+</div>
+<br>
+<br>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+   <div class="col" *ngFor="let skill of skill">
+     <div class="card h-100 cardskill">       
+       <div class="card-body">
+         <div class="headertitleskill">
+            <h5 class="card-title">{{skill.skill}}</h5>
+            <ul>
+               <li><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editSkillModal" (click)="onOpenModal('edit', skill)">
+               <i class="bi bi-pencil"></i>        
+            </button ></li>
+            <li><button type="button" class="btn "  data-bs-toggle="modal" data-bs-target="#deleteSkillModal" (click)="onOpenModal('delete', skill)" > 
+              <i class="bi bi-trash"></i>      
+            </button></li>
+            </ul>
+         </div>
+         
+         <div class="card-text">
+            <div class="container centerprogress">
+               <div class="row">
+                   <div class="col-md-3 col-sm-6">
+                       <div class="progress blue">
+                           <span class="progress-left">
+                             <span class="progress-bar"></span>
+                           </span>
+                           <span class="progress-right">
+                               <span class="progress-bar"></span>
+                           </span>               
+                           <div class="progress-value">{{skill.percentage}}%</div>
+                       </div>
+                   </div>
+            </div>   
+         </div>
+       </div>
+     </div>
+   </div>
+   
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="row" id="cero">
 
@@ -10,13 +80,13 @@
 
     <div class="col-lg-1"></div>
     <div class="col-lg-11">
-        <ul *ngFor="let skill of skill">
-            <li><h3> {{skill.skill}}  </h3> - <h3> {{skill.percentage}} </h3> 
+        <ul>
+            <li><h3> </h3> 
                 
 				
 				                       
                             
-
+                     <!--
 							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editSkillModal" (click)="onOpenModal('edit', skill)">
 								<i class="bi bi-pencil"></i>
 							  
@@ -24,7 +94,7 @@
 							<button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteSkillModal" (click)="onOpenModal('delete', skill)" > 
 							  <i class="bi bi-trash"></i>
 							
-							</button>
+							</button>-->
                
 				
             </li>

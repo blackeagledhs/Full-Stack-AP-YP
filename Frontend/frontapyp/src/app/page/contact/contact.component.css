@@ -1,0 +1,26 @@
+.contacttitle {
+    font-family: monospace;
+    background: #464547;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #ffffff;
+  }
+
+  .cardcontact {
+    display: flex;
+    justify-content: center;
+    max-width: 50%;
+    align-self: auto;
+    margin: 0 50px;
+  }
+
+  
+
+  .contacts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.1em;
+  }

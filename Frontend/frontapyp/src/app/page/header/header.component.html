@@ -1,64 +1,157 @@
-<div>
-   <h2>{{user?.name}}</h2>
-   <h3>{{user?.surname}}</h3>
-   <h3>{{user?.title}}</h3>
-   <h3>{{user?.aboutme}}</h3>
-   <img [src]="user?.urlimgbanner" alt="">   
-</div>
 <div class="banner">
-   <img [src]="user?.urlimgprofile" alt="">
-
+  <img [src]="user?.urlImgbanner" alt="Banner" />
 </div>
-
-   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editUserModal" (click)="onOpenModal('edit', user)">
-      <i class="bi bi-pencil"></i>
-
-
+<div class="imgprofile">
+  <img [src]="user?.urlImgprofile" alt="Image Profile" />
+</div>
+<div class="card cardcustom">
+  <div class="card-header">
+    <div class="name">
+      <p>{{ user?.name }} {{ user?.surname }}</p>
+      <button
+        type="button"
+        class="btn"
+        data-bs-toggle="modal"
+        data-bs-target="#editUserModal"
+        (click)="onOpenModal('edit', user)"
+      >
+        <i class="bi bi-pencil"></i>
+      </button>
+    </div>
+    <p class="title">{{ user?.title }}</p>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ user?.aboutme }}</p>
+  </div>
+</div>
 
 <!--Edit Modal -->
-<div class="modal fade" id="editUserModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-labelledby="editUserModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" ngModel="{{ editUser?.iduser }}">
-       <div class="modal-content">
-          <div class="modal-header">
-             <h5 class="modal-title" id="editUserModalLabel">Edit Project {{editUser?.name}}</h5>
-             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-             
-             </button>
+<div
+  class="modal fade"
+  id="editUserModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="editUserModalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered"
+    ngDefaultControl
+    ngModel="{{ editUser?.iduser }}"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editUserModalLabel">
+          Edit Project {{ editUser?.name }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              [ngModel]="editUser?.name"
+              name="name"
+              class="form-control"
+              id="name"
+              placeholder="Name"
+              Required
+            />
           </div>
-          <div class="modal-body">
-             <form #editForm="ngForm">
-                <div class="form-group">
-                   <label for="name">Name</label>
-                   <input type="text" [ngModel]="editUser?.name" name="name" class="form-control" id="name"  placeholder="Name" Required />
-                </div>
-                <input type="hidden" [ngModel]="editUser?.iduser" name="iduser" class="form-control" id="iduser">                
-                <div class="form-group">
-                   <label for="surname">Surname</label>
-                   <input type="text" [ngModel]="editUser?.surname" name="surname" class="form-control" id="surname" placeholder="Surname" Required />
-                </div>
-                <div class="form-group">
-                   <label for="title">Title</label>
-                   <input type="text" [ngModel]="editUser?.title" name="title" class="form-control" id="title" placeholder="Title" Required />
-                </div>      
-                <div class="form-group">
-                    <label for="aboutme">About me</label>
-                    <input type="text" [ngModel]="editUser?.aboutme" name="aboutme" class="form-control" id="aboutme" placeholder="About me" Required />
-                 </div>    
-                 <div class="form-group">
-                    <label for="imgprofile">Image Profile</label>
-                    <input type="text" [ngModel]="editUser?.urlimgprofile" name="urlimgprofile" class="form-control" id="urlimageprofile" placeholder="Image Profile" Required />
-                 </div>
-                 <div class="form-group">
-                    <label for="urlImgbanner">URL Image Project</label>
-                    <input type="text" [ngModel]="editUser?.urlimgbanner" name="urlImagebanner" class="form-control" id="urlImagebanner" placeholder="Banner URL" Required />
-                 </div>         
-                <div class="modal-footer">
-                   <button type="button" id="edit-project-modal" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
-                   <button (click)="onEditUser(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Save changes</button>
-                </div>
-             </form>
+          <input
+            type="hidden"
+            [ngModel]="editUser?.iduser"
+            name="iduser"
+            class="form-control"
+            id="iduser"
+          />
+          <div class="form-group">
+            <label for="surname">Surname</label>
+            <input
+              type="text"
+              [ngModel]="editUser?.surname"
+              name="surname"
+              class="form-control"
+              id="surname"
+              placeholder="Surname"
+              Required
+            />
           </div>
-       </div>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              [ngModel]="editUser?.title"
+              name="title"
+              class="form-control"
+              id="title"
+              placeholder="Title"
+              Required
+            />
+          </div>
+          <div class="form-group">
+            <label for="aboutme">About me</label>
+            <input
+              type="text"
+              [ngModel]="editUser?.aboutme"
+              name="aboutme"
+              class="form-control"
+              id="aboutme"
+              placeholder="About me"
+              Required
+            />
+          </div>
+          <div class="form-group">
+            <label for="imgprofile">Image Profile</label>
+            <input
+              type="text"
+              [ngModel]="editUser?.urlImgprofile"
+              name="urlimgprofile"
+              class="form-control"
+              id="urlimageprofile"
+              placeholder="Image Profile"
+              Required
+            />
+          </div>
+          <div class="form-group">
+            <label for="urlImgbanner">URL Image Project</label>
+            <input
+              type="text"
+              [ngModel]="editUser?.urlImgbanner"
+              name="urlImagebanner"
+              class="form-control"
+              id="urlImagebanner"
+              placeholder="Banner URL"
+              Required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="edit-project-modal"
+              data-bs-dismiss="modal"
+              class="btn btn-secondary"
+            >
+              Close
+            </button>
+            <button
+              (click)="onEditUser(editForm.value)"
+              data-bs-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Save changes
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-  
+</div>

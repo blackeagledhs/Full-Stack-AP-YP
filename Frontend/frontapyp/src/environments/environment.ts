@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  urlBase: 'http://localhost:8080'
+  urlBase: "https://backend-portfolio-mauro-vicens.herokuapp.com"
+  
 };
 
 /*

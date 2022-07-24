@@ -1,117 +1,233 @@
-<h3>
-	Contact Info
-	<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addContactModal"><i class="bi bi-plus-circle"></i></button>
-</h3>
+<br />
+<div class="contacttitle">
+  <h3>Contact</h3>
+  <button
+    type="button"
+    class="btn btn-light"
+    data-bs-toggle="modal"
+    data-bs-target="#addContactModal"
+  >
+    <i class="bi bi-plus-circle"></i>
+  </button>
+</div>
+<br />
+<br />
 
-<div class="row" id="cero">
-
-
-
-
-    <div class="col-lg-1"></div>
-    <div class="col-lg-11">
-        <ul *ngFor="let contact of contact">
-            <li><h3> {{contact.socialnetwork}}  </h3> - <h3> {{contact.mail}} </h3> 
-                
-				
-				                       
-                            
-
-							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editContactModal" (click)="onOpenModal('edit', contact)">
-								<i class="bi bi-pencil"></i>
-							  
-							</button >
-							<button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteContactModal" (click)="onOpenModal('delete', contact)" > 
-							  <i class="bi bi-trash"></i>
-							
-							</button>
-               
-				
-            </li>
-
-        </ul>
+<div class="card cardcontact">
+  <div class="card-title">
+   
+  </div>
+  <div class="card-body" *ngFor="let contact of contact">
+    <div class="contacts">
+      {{ contact.socialnetwork }} <br />
+      {{ contact.mail }}
     </div>
-
-
+  </div>
 </div>
 
+<!--
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#editContactModal"
+          (click)="onOpenModal('edit', contact)"
+        >
+          <i class="bi bi-pencil"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-toggle="modal"
+          data-bs-target="#deleteContactModal"
+          (click)="onOpenModal('delete', contact)"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      -->
+     
+
 <!-- Modal for Add Contact -->
-<div class="modal fade" id="addContactModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addContactModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addContactModal">Add Contact</h5>
-                <button type="button" class="btn-close warning" data-bs-dismiss="modal" aria-label="Close">
-                
-                </button>
-            </div>
-            <div class="modal-body">
-                <form #addForm="ngForm" (ngSubmit)="onAddContact(addForm)">
-
-                    <label for="socialnetwork">Social Network </label><br>
-                    <input ngModel type="text" name="socialnetwork"  class="form-control">
-                    <label for="mail">Mail</label><br>
-                    <input ngModel type="text" name="mail"  class="form-control">                    
-                    <div class="modal-footer">
-                        <button  type="button" id="add-contact-modal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Add</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
+<div
+  class="modal fade"
+  id="addContactModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="addContactModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addContactModal">Add Contact</h5>
+        <button
+          type="button"
+          class="btn-close warning"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddContact(addForm)">
+          <label for="socialnetwork">Social Network </label><br />
+          <input
+            ngModel
+            type="text"
+            name="socialnetwork"
+            class="form-control"
+          />
+          <label for="mail">Mail</label><br />
+          <input ngModel type="text" name="mail" class="form-control" />
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="add-contact-modal"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              [disabled]="addForm.invalid"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-</div> 
+  </div>
+</div>
 
 <!--Edit Modal -->
-<div class="modal fade" id="editContactModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-labelledby="editContactModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-       <div class="modal-content">
-          <div class="modal-header">
-             <h5 class="modal-title" id="editContactModalLabel">Edit Contact </h5>
-             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-             
-             </button>
+<div
+  class="modal fade"
+  id="editContactModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="editContactModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editContactModalLabel">Edit Contact</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="socialnetwork">Social network</label>
+            <input
+              type="text"
+              ngModel="{{ editContact?.socialnetwork }}"
+              name="socialnetwork"
+              class="form-control"
+              id="socialnetwork"
+              placeholder="Social Network"
+              Required
+            />
           </div>
-          <div class="modal-body">
-             <form #editForm="ngForm">
-                <div class="form-group">
-                   <label for="socialnetwork">Social network</label>
-                   <input type="text" ngModel="{{editContact?.socialnetwork}}" name="socialnetwork" class="form-control" id="socialnetwork"  placeholder="Social Network" Required />
-                </div>
-                <input type="hidden" ngModel="{{editContact?.idcontact}}" name="idcontact" class="form-control" id="idcontact" placeholder="">                
-                <div class="form-group">
-                   <label for="mail">Mail</label>
-                   <input type="text" ngModel="{{editContact?.mail}}" name="mail" class="form-control" id="mail" placeholder="Mail" Required />
-                </div>                          
-                <div class="modal-footer">
-                   <button type="button" id="edit-contact-modal" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
-                   <button (click)="onEditContact(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary" >Save changes</button>
-                </div>
-             </form>
+          <input
+            type="hidden"
+            ngModel="{{ editContact?.idcontact }}"
+            name="idcontact"
+            class="form-control"
+            id="idcontact"
+            placeholder=""
+          />
+          <div class="form-group">
+            <label for="mail">Mail</label>
+            <input
+              type="text"
+              ngModel="{{ editContact?.mail }}"
+              name="mail"
+              class="form-control"
+              id="mail"
+              placeholder="Mail"
+              Required
+            />
           </div>
-       </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="edit-contact-modal"
+              data-bs-dismiss="modal"
+              class="btn btn-secondary"
+            >
+              Close
+            </button>
+            <button
+              (click)="onEditContact(editForm.value)"
+              data-bs-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Save changes
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-  
+</div>
 
 <!-- Delete Modal -->
-<div class="modal fade" id="deleteContactModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteContactModelLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-       <div class="modal-content">
-          <div class="modal-header">
-             <h5 class="modal-title" id="deleteContactModelLabel">Delete Contact</h5>
-             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-             
-             </button>
-          </div>
-          <div class="modal-body">
-             <p>Are you sure you want to delete rhis contact: <strong>{{deleteContact?.socialnetwork}} and {{deleteContact?.mail}}</strong> ?</p>
-             <div class="modal-footer">
-                <button type="button" id="delete-contact-modal" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                <button (click)="onDeleteContact(deleteContact!.idcontact)" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
-             </div>
-          </div>
-       </div>
+<div
+  class="modal fade"
+  id="deleteContactModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="deleteContactModelLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteContactModelLabel">Delete Contact</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Are you sure you want to delete rhis contact:
+          <strong
+            >{{ deleteContact?.socialnetwork }} and
+            {{ deleteContact?.mail }}</strong
+          >
+          ?
+        </p>
+        <div class="modal-footer">
+          <button
+            type="button"
+            id="delete-contact-modal"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            No
+          </button>
+          <button
+            (click)="onDeleteContact(deleteContact!.idcontact)"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+          >
+            Yes
+          </button>
+        </div>
+      </div>
     </div>
   </div>
+</div>

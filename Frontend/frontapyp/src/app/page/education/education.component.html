@@ -1,39 +1,32 @@
-<h3>
-	Educación
-	<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addEducationModal"><i class="bi bi-plus-circle"></i></button>
-</h3>
-
-<div class="row" id="cero">
-
-
-
-
-    <div class="col-lg-1"></div>
-    <div class="col-lg-11">
-        <ul *ngFor="let education of education">
-            <li><h3> {{education.certificate}}  </h3> - <h3> {{education.institute}} </h3> - <h3> {{education.year }} </h3> 
-                
-				
-				                       
-                            
-
-							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEducationModal" (click)="onOpenModal('edit', education)">
-								<i class="bi bi-pencil"></i>
-							  
-							</button >
-							<button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteEducationModal" (click)="onOpenModal('delete', education)" > 
-							  <i class="bi bi-trash"></i>
-							
-							</button>
-               
-				
-            </li>
-
-        </ul>
-    </div>
-
-
+<br>
+<div class="edutitle">
+<h3>Education</h3>
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addEducationModal"><i class="bi bi-plus-circle"></i></button>
 </div>
+<br>
+<br>
+<div class="cardedu" *ngFor="let education of education">
+   <div class="card">
+      <div class="card-header headertitleexp">
+        <h5>{{education.certificate}}</h5>
+        <ul>
+         <li><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editEducationModal" (click)="onOpenModal('edit', education)">
+         <i class="bi bi-pencil"></i>        
+      </button ></li>
+      <li><button type="button" class="btn "  data-bs-toggle="modal" data-bs-target="#deleteEducationModal" (click)="onOpenModal('delete', education)" > 
+        <i class="bi bi-trash"></i>      
+      </button></li>
+      </ul>
+      </div>
+      <div class="card-body bodycard">
+        <h6>{{education.institute}}</h6><br>
+        <p class="card-text"><strong>{{education.year }}</strong></p>        
+      </div>
+    </div>
+    <br>
+   </div>
+
+
 
 <!-- Modal for Add Education -->
 <div class="modal fade" id="addEducationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addEducationModal" aria-hidden="true">

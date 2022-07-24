@@ -1,41 +1,33 @@
-<h3>
-	Project's
-	<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addProjectModal"><i class="bi bi-plus-circle"></i></button>
-</h3>
-
-<div class="row" id="cero">
-
-
-
-
-    <div class="col-lg-1"></div>
-    <div class="col-lg-11">
-        <ul *ngFor="let project of project">
-            <li><h3> {{project.projectname}}  </h3> - <h3> {{project.projectdescription}} </h3> -
-                <a [href]="project.urlproject">{{ project.urlproject}}</a>
-                <img [src]="project.urlimgproject" alt="{{project.projectname}}"> 
-                
-				
-				                       
-                            
-
-							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProjectModal" (click)="onOpenModal('edit', project)">
-								<i class="bi bi-pencil"></i>
-							  
-							</button >
-							<button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteProjectModal" (click)="onOpenModal('delete', project)" > 
-							  <i class="bi bi-trash"></i>
-							
-							</button>
-               
-				
-            </li>
-
-        </ul>
-    </div>
-
-
+<br>
+<div class="projecttitle">
+<h3>Project's</h3>
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addProjectModal"><i class="bi bi-plus-circle"></i></button>
 </div>
+<br>
+<br>
+<div class="row row-cols-1 row-cols-md-2 g-4" >
+   <div class="col" *ngFor="let project of project">
+     <div class="card cardproject">
+       <img [src]="project.urlimgproject" class="card-img-top" alt="{{project.projectname}}">
+       <div class="card-body bodycard">
+         <div class="card-title headertitleproj">
+         <h5>{{project.projectname}}</h5>
+         <ul>
+            <li><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editProjectModal" (click)="onOpenModal('edit', project)">
+            <i class="bi bi-pencil"></i>        
+         </button ></li>
+         <li><button type="button" class="btn "  data-bs-toggle="modal" data-bs-target="#deleteProjectModal" (click)="onOpenModal('delete', project)" > 
+           <i class="bi bi-trash"></i>      
+         </button></li>
+         </ul>
+         </div>
+         <p class="card-text">{{project.projectdescription}}</p>
+         <a [href]="project.urlproject">VISITAR</a>
+       </div>
+     </div>   
+ </div>
+
+
 
 <!-- Modal for Add Project -->
 <div class="modal fade" id="addProjectModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addProjectModal" aria-hidden="true">
@@ -54,10 +46,10 @@
                     <input ngModel type="text" name="projectname"  class="form-control">
                     <label for="projectdescription">Description</label><br>
                     <input ngModel type="text" name="projectdescription"  class="form-control">
-                    <label for="projecturl">URL</label><br>
-                    <input ngModel type="text" name="projecturl"  class="form-control">
-                    <label for="projectimgurl">URL Image Project</label><br>
-                    <input ngModel type="text" name="projectimgurl"  class="form-control">                    
+                    <label for="urlproject">URL</label><br>
+                    <input ngModel type="text" name="urlproject"  class="form-control">
+                    <label for="urlimgproject">URL Image Project</label><br>
+                    <input ngModel type="text" name="urlimgproject"  class="form-control">                    
                     <div class="modal-footer">
                         <button  type="button" id="add-project-modal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Add</button>
@@ -91,12 +83,12 @@
                    <input type="text" ngModel="{{editProject?.projectdescription}}" name="projectdescription" class="form-control" id="description" placeholder="Description" Required />
                 </div>
                 <div class="form-group">
-                   <label for="projecturl">URL</label>
-                   <input type="text" ngModel="{{editProject?.urlproject}}" name="projecturl" class="form-control" id="projecturl" placeholder="URL" Required />
+                   <label for="urlproject">URL</label>
+                   <input type="text" ngModel="{{editProject?.urlproject}}" name="urlproject" class="form-control" id="urlproject" placeholder="URL" Required />
                 </div>      
                 <div class="form-group">
                     <label for="projectimgurl">URL Image Project</label>
-                    <input type="text" ngModel="{{editProject?.urlimgproject}}" name="projectimgurl" class="form-control" id="projectimgurl" placeholder="Image URL" Required />
+                    <input type="text" ngModel="{{editProject?.urlimgproject}}" name="urlimgproject" class="form-control" id="urlimgproject" placeholder="Image URL" Required />
                  </div>             
                 <div class="modal-footer">
                    <button type="button" id="edit-project-modal" data-bs-dismiss="modal" class="btn btn-secondary">Close</button>
