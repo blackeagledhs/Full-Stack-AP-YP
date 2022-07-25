@@ -8,6 +8,7 @@ import { ProjectComponent } from './page/project/project.component';
 import { SkillComponent } from './page/skill/skill.component';
 import { ContactComponent } from './page/contact/contact.component';
 import { NotfoundComponent } from './page/notfound/notfound.component';
+import { LoginComponent } from './page/login/login.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'experience', component: ExperienceComponent },
   { path: 'project', component: ProjectComponent },
   { path: 'skill', component: SkillComponent },
+  { path: 'login', component: LoginComponent}
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', component: NotfoundComponent}
 ];
