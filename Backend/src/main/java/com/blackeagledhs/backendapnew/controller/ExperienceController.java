@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/experience")
+@CrossOrigin(origins = "*")
 public class ExperienceController {
 
     private final ExperienceService experienceService;
@@ -39,21 +40,16 @@ public class ExperienceController {
         return new ResponseEntity(experience, HttpStatus.OK);
     }
 
-    @PutMapping("/edit/{idExperience}")
-    public ResponseEntity<?> editExperience(@PathVariable("idExperience") Long idExperience, @RequestBody Experience experienceDto){
-        Experience experience = experienceService.getIdExperience(idExperience).orElse(null);
-        experience.setCompany(experienceDto.getCompany());
-        experience.setDescription(experienceDto.getDescription());
-        experience.setAdmission(experienceDto.getAdmission());
-        experience.setEgress(experienceDto.getEgress());
-        experienceService.addExperience(experience);
-        return new ResponseEntity(experience, HttpStatus.OK);
+    @PutMapping("/edit")
+    public ResponseEntity<Experience> editExperience(@RequestBody Experience experienceDto){
+        Experience experience = experienceService.editExperience(experienceDto);
+        return new ResponseEntity<>(experience, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{idExperience}")
     public ResponseEntity<?> deleteExperience(@PathVariable("idExperience") Long idExperience){
         experienceService.deleteExperience(idExperience);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

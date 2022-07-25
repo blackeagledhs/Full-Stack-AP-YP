@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/contact")
+@CrossOrigin(origins = "*")
 public class ContactController {
 
     private final ContactService contactService;
@@ -40,19 +41,15 @@ public class ContactController {
         return new ResponseEntity(contact, HttpStatus.OK);
     }
 
-    @PutMapping("/edit/{idContact}")
-    public ResponseEntity<?> editContact(@PathVariable("idContact") Long idContact, @RequestBody Contact contactDto) {
-        Contact contact = contactService.getIdcontact(idContact).orElse(null);
-
-        contact.setSocialnetwork(contactDto.getSocialnetwork());
-        contact.setMail(contactDto.getMail());
-        contactService.addContact(contact);
-        return new ResponseEntity(contact, HttpStatus.OK);
+    @PutMapping("/edit")
+    public ResponseEntity<Contact> editContact(@RequestBody Contact contactDto) {
+        Contact contact = contactService.editContact(contactDto);
+        return new ResponseEntity<>(contact, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{idContact}")
     public ResponseEntity<?> deleteContact(@PathVariable("idContact") Long idContact){
         contactService.deleteContact(idContact);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

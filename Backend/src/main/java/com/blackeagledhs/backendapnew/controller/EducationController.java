@@ -1,5 +1,6 @@
 package com.blackeagledhs.backendapnew.controller;
 
+
 import com.blackeagledhs.backendapnew.entity.Education;
 import com.blackeagledhs.backendapnew.service.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/education")
+@CrossOrigin(origins = "*")
 public class EducationController {
 
     private final EducationService educationService;
@@ -39,20 +41,15 @@ public class EducationController {
         return new ResponseEntity(education, HttpStatus.OK);
     }
 
-    @PutMapping("/edit/{idEducation}")
-    public ResponseEntity<?> editEducation(@PathVariable("idEducation") Long idEducation, @RequestBody Education educationDto){
-        Education education = educationService.getIdeducation(idEducation).orElse(null);
-
-        education.setInstitute(educationDto.getInstitute());
-        education.setCertificate(educationDto.getCertificate());
-        education.setYear(educationDto.getYear());
-        educationService.addEducation(education);
-        return new ResponseEntity(education, HttpStatus.OK);
+    @PutMapping("/edit")
+    public ResponseEntity<Education> editEducation(@RequestBody Education educationDto){
+        Education education = educationService.editEducation(educationDto);
+        return new ResponseEntity<>(education, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{idEducation}")
     public ResponseEntity<?> deleteEducation(@PathVariable("idEducation") Long idEducation){
         educationService.deleteEducation(idEducation);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

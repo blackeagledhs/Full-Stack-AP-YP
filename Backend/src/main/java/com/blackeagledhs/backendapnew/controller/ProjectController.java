@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/project")
+@CrossOrigin(origins = "*")
 public class ProjectController {
     private final ProjectService projectService;
 
@@ -38,20 +39,15 @@ public class ProjectController {
         return new ResponseEntity(project, HttpStatus.OK);
     }
 
-    @PutMapping("/edit/{idProject}")
-    public ResponseEntity<?> editProject(@PathVariable("idProject") Long idProject, @RequestBody Project projectDto){
-        Project project = projectService.getIdProject(idProject).orElse(null);
-        project.setProjectname(projectDto.getProjectname());
-        project.setProjectdescription(projectDto.getProjectdescription());
-        project.setUrlproject(projectDto.getUrlproject());
-        project.setUrlimgproject(projectDto.getUrlimgproject());
-        projectService.addProject(project);
-        return new ResponseEntity(project, HttpStatus.OK);
+    @PutMapping("/edit")
+    public ResponseEntity<Project> editProject(@RequestBody Project projectDto){
+        Project project = projectService.editProject(projectDto);
+        return new ResponseEntity<>(project, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{idProject}")
     public ResponseEntity<?> deleteProject(@PathVariable("idProject") Long idProject){
         projectService.deleteProject(idProject);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

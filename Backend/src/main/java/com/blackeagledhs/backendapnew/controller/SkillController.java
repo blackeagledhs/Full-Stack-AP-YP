@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/skill")
+@CrossOrigin(origins = "*")
 public class SkillController {
 
     private final SkillService skillService;
@@ -39,19 +40,16 @@ public class SkillController {
         return new ResponseEntity(skill, HttpStatus.OK);
     }
 
-    @PutMapping("/edit/{idSkill}")
-    public ResponseEntity<?> editSkill(@PathVariable("idSkill") Long idSkill, @RequestBody Skill skillDto){
-        Skill skill = skillService.getIdSkill(idSkill).orElse(null);
-        skill.setSkill(skillDto.getSkill());
-        skill.setPercentage(skillDto.getPercentage());
-        skillService.addSkill(skill);
-        return new ResponseEntity(skill, HttpStatus.OK);
+    @PutMapping("/edit")
+    public ResponseEntity<Skill> editSkill(@RequestBody Skill skillDto){
+        Skill skill = skillService.editSkill(skillDto);
+        return new ResponseEntity<>(skill, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{idSkill}")
     public ResponseEntity<?> deleteSkill(@PathVariable("idSkill") Long idSkill){
         skillService.deleteSkill(idSkill);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

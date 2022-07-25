@@ -36,7 +36,7 @@ public class EducationService {
         return educationRepository.save(education);
     }
 
-    public void deleteEducation(Long ideducation){
-        educationRepository.deleteById(ideducation);
+    public void deleteEducation(Long idEducation){
+        educationRepository.deleteById(idEducation);
     }
 }
