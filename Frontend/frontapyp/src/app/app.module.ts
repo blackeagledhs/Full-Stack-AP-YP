@@ -17,6 +17,7 @@ import { NotfoundComponent } from './page/notfound/notfound.component';
 import { ProjectComponent } from './page/project/project.component';
 import { SkillComponent } from './page/skill/skill.component';
 import { TopbarComponent } from './page/topbar/topbar.component';
+import { LoginComponent } from './page/login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TopbarComponent } from './page/topbar/topbar.component';
     NotfoundComponent,
     ProjectComponent,
     SkillComponent,
-    TopbarComponent
+    TopbarComponent,
+    LoginComponent
 
   ],
   imports: [
